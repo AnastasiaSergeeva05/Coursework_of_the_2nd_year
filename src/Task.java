@@ -2,15 +2,13 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 public abstract class Task {
-
-    private String title;
-    private String description;
     private static int counter;
     private final int id;
+    private String title;
+    private String description;
 
     public enum TypeOfTask {
         PERSONAL("Личный"),
-
         WORK("Рабочий");
 
         private String typeOfTaskTitle;
@@ -19,32 +17,38 @@ public abstract class Task {
             this.typeOfTaskTitle = typeOfTaskTitle;
         }
 
+        public String getTypeOfTaskTitle() {
+            return typeOfTaskTitle;
+        }
+
+        public void setTypeOfTaskTitle(String typeOfTaskTitle) {
+            this.typeOfTaskTitle = typeOfTaskTitle;
+        }
+
+        public String getTypeOfTask() {
+            return typeOfTaskTitle;
+        }
+
     }
 
     public TypeOfTask typeOfTask;
 
-    private final LocalDateTime taskDateTime;
+    private LocalDateTime taskDateTime;
 
-    public Task(String title, String description, LocalDateTime taskDateTime) {
-
-        this.description = description;
-        this.taskDateTime = taskDateTime;
+    public Task(String title, String description, LocalDateTime taskDateTime, TypeOfTask typeOfTask) {
         this.id = counter++;
         this.title = title;
-
+        this.description = description;
+        this.taskDateTime = taskDateTime;
+        this.typeOfTask = typeOfTask;
     }
 
     public String getTitle() {
-
         return title;
     }
 
     public String getDescription() {
         return description;
-    }
-
-    public TypeOfTask getTypeOfTask() {
-        return typeOfTask;
     }
 
 
@@ -57,5 +61,14 @@ public abstract class Task {
 
     public LocalDateTime getTaskDateTime() {
         return taskDateTime;
+    }
+
+    @Override
+    public String toString() {
+        return "Ваш id " + id +
+                ",название: " + title + '\'' +
+                ", описание: '" + description + '\'' +
+                ", ваше время: " + taskDateTime +
+                '}';
     }
 }

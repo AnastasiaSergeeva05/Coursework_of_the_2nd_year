@@ -1,13 +1,12 @@
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
-public class EverydayTask extends Task {
-    public EverydayTask(String title,
-
+public class EveryDayTask extends Task {
+    public EveryDayTask(String title,
                         String description,
-
-                        LocalDateTime taskDateTime) {
-        super(title, description, taskDateTime);
+                        LocalDateTime taskDateTime,
+                        TypeOfTask typeOfTask) {
+        super(title, description, taskDateTime, typeOfTask);
     }
 
     @Override
